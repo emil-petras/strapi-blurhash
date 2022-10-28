@@ -7,7 +7,7 @@ A plugin for <a href="https://github.com/strapi/strapi">Strapi CMS</a> that gene
 To install, run:
 
 ```bash
-npm install strapi-blurhash
+npm install @strapi/strapi-blurhash
 ```
 
 Open/create file `config/plugins.js`. Enable this plugin by adding:
