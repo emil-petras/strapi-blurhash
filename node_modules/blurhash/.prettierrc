@@ -1,9 +1,0 @@
-{
-  "printWidth": 80,
-  "overrides": [
-    {
-      "files": ["*.ts"],
-      "options": {}
-    }
-  ]
-}
