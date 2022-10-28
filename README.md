@@ -26,7 +26,7 @@ module.exports = {
 
 In the Strapi Dashboard open Content Manager. Edit one collection/single type. Add or edit a Media field type and save the collection/single type.
 
-## How to get blurhas
+## How to get blurhash
 
 Target a Strapi REST API endpoint. For example:
 
@@ -55,39 +55,7 @@ The response will be a JSON containing blurhash along with rest of the image dat
               "width": 960,
               "height": 168,
               "formats": {
-                "thumbnail": {
-                  "name": "thumbnail_image.png",
-                  "hash": "thumbnail_image_ed1fbcdba0",
-                  "ext": ".png",
-                  "mime": "image/png",
-                  "path": null,
-                  "width": 245,
-                  "height": 43,
-                  "size": 2.99,
-                  "url": "/uploads/thumbnail_image_ed1fbcdba0.png"
-                },
-                "medium": {
-                  "name": "medium_image.png",
-                  "hash": "medium_image_ed1fbcdba0",
-                  "ext": ".png",
-                  "mime": "image/png",
-                  "path": null,
-                  "width": 750,
-                  "height": 131,
-                  "size": 15.55,
-                  "url": "/uploads/medium_image_ed1fbcdba0.png"
-                },
-                "small": {
-                  "name": "small_image.png",
-                  "hash": "small_image_ed1fbcdba0",
-                  "ext": ".png",
-                  "mime": "image/png",
-                  "path": null,
-                  "width": 500,
-                  "height": 88,
-                  "size": 8.48,
-                  "url": "/uploads/small_image_ed1fbcdba0.png"
-                }
+                ...
               },
               "hash": "image_ed1fbcdba0",
               "ext": ".png",
