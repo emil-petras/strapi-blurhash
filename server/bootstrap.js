@@ -4,7 +4,7 @@ module.exports = ({ strapi }) => {
 
   const generateBlurhash = async (event) => {
     const { data } = event.params;
-    if (data.mime.startsWith('image/')) {
+    if (data.mime && data.mime.startsWith('image/')) {
       data.blurhash = await strapi.plugin('strapi-blurhash').service('blurhash').generateBlurhash(data.url);
     }
   };
