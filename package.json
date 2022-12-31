@@ -1,6 +1,6 @@
 {
   "name": "strapi-blurhash",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A plugin that generates blurhash for your uploaded images",
   "strapi": {
     "name": "strapi-blurhash",
