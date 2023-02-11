@@ -1,17 +1,19 @@
-'use strict';
+"use strict";
 
 module.exports = ({ strapi }) => {
+	const generateBlurHash = async (event) => {
+		const { data } = event.params;
+		if (data.mime && data.mime.startsWith("image/")) {
+			data.blurHash = await strapi
+				.plugin("strapi-blurHash")
+				.service("blurHash")
+				.generateBlurHash(data.url);
+		}
+	};
 
-  const generateBlurhash = async (event) => {
-    const { data } = event.params;
-    if (data.mime && data.mime.startsWith('image/')) {
-      data.blurhash = await strapi.plugin('strapi-blurhash').service('blurhash').generateBlurhash(data.url);
-    }
-  };
-
-  strapi.db.lifecycles.subscribe({
-    models: ['plugin::upload.file'],
-    beforeCreate: generateBlurhash,
-    beforeUpdate: generateBlurhash,
-  });
+	strapi.db.lifecycles.subscribe({
+		models: ["plugin::upload.file"],
+		beforeCreate: generateBlurHash,
+		beforeUpdate: generateBlurHash,
+	});
 };

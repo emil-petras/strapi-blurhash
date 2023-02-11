@@ -1,32 +1,32 @@
 {
-  "name": "strapi-blurhash",
-  "version": "1.0.2",
-  "description": "A plugin that generates blurhash for your uploaded images",
-  "strapi": {
-    "name": "strapi-blurhash",
-    "description": "A plugin that generates blurhash for your uploaded images",
-    "kind": "plugin",
-    "displayName": "Strapi Blurhash"
-  },
-  "dependencies": {
-    "plaiceholder": "^2.5.0"
-  },
-  "peerDependencies": {
-    "@strapi/strapi": "^4.0.0"
-  },
-  "author": {
-    "name": "Emil Petras",
-    "url": "https://github.com/emil-petras"
-  },
-  "maintainers": [
-    {
-      "name": "Emil Petras",
-      "url": "https://github.com/emil-petras"
-    }
-  ],
-  "engines": {
-    "node": ">=14.19.1 <=18.x.x",
-    "npm": ">=6.0.0"
-  },
-  "license": "MIT"
+	"name": "strapi-blurash",
+	"version": "1.0.2",
+	"description": "A plugin that generates blurHash for your uploaded images",
+	"strapi": {
+		"name": "strapi-blurhash",
+		"description": "A plugin that generates blurHash for your uploaded images",
+		"kind": "plugin",
+		"displayName": "Strapi BlurHash"
+	},
+	"dependencies": {
+		"plaiceholder": "^2.5.0"
+	},
+	"peerDependencies": {
+		"@strapi/strapi": "^4.0.0"
+	},
+	"author": {
+		"name": "Emil Petras",
+		"url": "https://github.com/emil-petras"
+	},
+	"maintainers": [
+		{
+			"name": "Emil Petras",
+			"url": "https://github.com/emil-petras"
+		}
+	],
+	"engines": {
+		"node": ">=14.19.1 <=18.x.x",
+		"npm": ">=6.0.0"
+	},
+	"license": "MIT"
 }
