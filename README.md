@@ -17,7 +17,6 @@ module.exports = {
     ...
     'strapi-blurhash': {
       enabled: true,
-      resolve: './src/plugins/strapi-blurhash/',
     },
   }
 ```
