@@ -9,7 +9,7 @@ module.exports = ({ strapi }) => {
       data.blurhash = await strapi.plugin('strapi-blurhash').service('blurhash').generateBlurhash(data.url);
     }
 
-    if (strapi.plugin('strapi-blurhash').config('regenerateOnUpdate')) {
+    if (strapi.plugin('strapi-blurhash').config('regenerateOnUpdate') === true) {
       const fullData = await strapi.db.query('plugin::upload.file').findOne({
         select: ['url', 'blurhash', 'name', 'mime'],
         where
