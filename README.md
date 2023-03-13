@@ -25,7 +25,7 @@ module.exports = {
 
 In the Strapi Dashboard open Content Manager. Edit one collection/single type. Add or edit a Media field type and save the collection/single type.
 
-## How to get blurhas
+## How to get blurhash
 
 Target a Strapi REST API endpoint. For example:
 
