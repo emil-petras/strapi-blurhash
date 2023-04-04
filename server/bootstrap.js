@@ -2,14 +2,14 @@
 
 module.exports = ({ strapi }) => {
 
-  const generateBlurhash = async (event) => {
+  const generateBlurhash = async (event, eventType) => {
     const { data, where } = event.params;
 
     if ((data.mime && data.mime.startsWith('image/'))) {
       data.blurhash = await strapi.plugin('strapi-blurhash').service('blurhash').generateBlurhash(data.url);
     }
 
-    if (strapi.plugin('strapi-blurhash').config('regenerateOnUpdate') === true) {
+    if (eventType === 'beforeUpdate' && strapi.plugin('strapi-blurhash').config('regenerateOnUpdate') === true) {
       const fullData = await strapi.db.query('plugin::upload.file').findOne({
         select: ['url', 'blurhash', 'name', 'mime'],
         where
@@ -23,7 +23,7 @@ module.exports = ({ strapi }) => {
 
   strapi.db.lifecycles.subscribe({
     models: ['plugin::upload.file'],
-    beforeCreate: generateBlurhash,
-    beforeUpdate: generateBlurhash,
+    beforeCreate: (event) => generateBlurhash(event, 'beforeCreate'),
+    beforeUpdate: (event) => generateBlurhash(event, 'beforeUpdate'),
   });
 };
