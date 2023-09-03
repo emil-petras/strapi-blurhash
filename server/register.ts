@@ -1,6 +1,6 @@
-'use strict';
+import { Strapi } from '@strapi/strapi';
 
-module.exports = ({ strapi }) => {
+export default ({ strapi }: { strapi: Strapi }) => {
   strapi.plugin('upload').contentTypes.file.attributes.blurhash = {
     type: 'text',
   };

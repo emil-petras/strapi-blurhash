@@ -1,18 +1,36 @@
 {
   "name": "strapi-blurhash",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A plugin that generates blurhash for your uploaded images",
   "strapi": {
     "name": "strapi-blurhash",
     "description": "A plugin that generates blurhash for your uploaded images",
-    "kind": "plugin",
-    "displayName": "Strapi Blurhash"
+    "kind": "plugin"
+  },
+  "scripts": {
+    "develop": "tsc -p tsconfig.server.json -w",
+    "build": "tsc -p tsconfig.server.json"
   },
   "dependencies": {
-    "plaiceholder": "^2.5.0"
+    "plaiceholder": "^2.5.0",
+    "@strapi/design-system": "^1.6.3",
+    "@strapi/helper-plugin": "^4.6.0"
+  },
+  "devDependencies": {
+    "@strapi/typescript-utils": "^4.6.0",
+    "@types/react": "^17.0.53",
+    "@types/react-dom": "^18.0.28",
+    "@types/react-router-dom": "^5.3.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^5.3.4",
+    "typescript": "5.0.4"
   },
   "peerDependencies": {
-    "@strapi/strapi": "^4.0.0"
+    "@strapi/strapi": "^4.0.0",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0",
+    "react-router-dom": "^5.3.4"
   },
   "author": {
     "name": "Emil Petras",
@@ -25,7 +43,7 @@
     }
   ],
   "engines": {
-    "node": ">=14.19.1 <=18.x.x",
+    "node": ">=16.0.0 <=20.x.x",
     "npm": ">=6.0.0"
   },
   "license": "MIT"

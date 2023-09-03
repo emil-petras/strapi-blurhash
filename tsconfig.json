@@ -1,0 +1,12 @@
+{
+  "extends": "@strapi/typescript-utils/tsconfigs/admin",
+
+  "compilerOptions": {
+    "target": "ESNext",
+    "strict": true
+  },
+
+  "include": ["admin", "custom.d.ts"],
+
+  "exclude": ["node_modules/", "dist/", "server/", "**/*.test.ts"]
+}

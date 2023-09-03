@@ -24,9 +24,15 @@ module.exports = {
   }
 ```
 
-## How to generate blurhash for an image
+## How to generate the blurhashes
+
+### For just one image
 
 In the Strapi Dashboard open Content Manager. Edit one collection/single type. Add or edit a Media field type and save the collection/single type.
+
+### For all existing images
+
+Open the plugin's settings section (`Settings` > `Strapi Blurhash` > `Re-generate`) and click the `Re-generate` button.
 
 ## How to get blurhash
 

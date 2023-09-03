@@ -1,0 +1,10 @@
+{
+  "plugin.name": "Blurhash",
+  "Settings.sectionTitle": "Re-generate",
+  "Settings.title": "Strapi Blurhash",
+  "Settings.subtitle": "Re-generate all image's blurhashes",
+  "Settings.regenerate": "Re-generate",
+  "Settings.processing": "Processing...",
+  "Settings.notifications.success": "All blurhashes successfuly regenerated",
+  "Settings.notifications.error": "Error while regenerating all blurhashes"
+}
