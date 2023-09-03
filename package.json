@@ -12,14 +12,25 @@
     "build": "tsc -p tsconfig.server.json"
   },
   "dependencies": {
-    "plaiceholder": "^2.5.0"
+    "plaiceholder": "^2.5.0",
+    "@strapi/design-system": "^1.6.3",
+    "@strapi/helper-plugin": "^4.6.0"
   },
   "devDependencies": {
     "@strapi/typescript-utils": "^4.6.0",
+    "@types/react": "^17.0.53",
+    "@types/react-dom": "^18.0.28",
+    "@types/react-router-dom": "^5.3.3",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^5.3.4",
     "typescript": "5.0.4"
   },
   "peerDependencies": {
-    "@strapi/strapi": "^4.0.0"
+    "@strapi/strapi": "^4.0.0",
+    "react": "^17.0.0 || ^18.0.0",
+    "react-dom": "^17.0.0 || ^18.0.0",
+    "react-router-dom": "^5.3.4"
   },
   "author": {
     "name": "Emil Petras",

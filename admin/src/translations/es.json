@@ -1,0 +1,8 @@
+{
+  "Settings.sectionTitle": "Re-generar",
+  "Settings.subtitle": "Re-generar los blurhashes de todas las imagenes",
+  "Settings.regenerate": "Re-generar",
+  "Settings.processing": "Procesando...",
+  "Settings.notifications.success": "Todos los blurhashes han sido regenerados correctamente",
+  "Settings.notifications.error": "Error durante la regeneración de todos los blurhashes"
+}
