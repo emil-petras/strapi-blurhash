@@ -24,8 +24,7 @@
       "url": "https://github.com/emil-petras"
     }
   ],
-  "engines": {
-    "node": ">=14.19.1 <=18.x.x",
+  "engines": { 
     "npm": ">=6.0.0"
   },
   "license": "MIT"
