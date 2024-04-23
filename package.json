@@ -1,6 +1,6 @@
 {
   "name": "strapi-blurhash",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "A plugin that generates blurhash for your uploaded images",
   "strapi": {
     "name": "strapi-blurhash",
@@ -9,10 +9,13 @@
     "displayName": "Strapi Blurhash"
   },
   "dependencies": {
-    "plaiceholder": "^2.5.0"
+    "canvas": "^2.9.0",
+    "blurhash": "^1.1.4",
+    "node-fetch": "^3.1.0"
   },
   "peerDependencies": {
-    "@strapi/strapi": "^4.0.0"
+    "@strapi/strapi": "^4.0.0",
+    "@strapi/utils": "^4.0.0"
   },
   "author": {
     "name": "Emil Petras",
