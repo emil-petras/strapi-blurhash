@@ -29,7 +29,7 @@ module.exports = ({ strapi }) => ({
 
       return blurhash;
     } catch (error) {
-      console.error(`Error generating blurhash: ${error.message}`);
+      strapi.log.error(`Error generating blurhash: ${error.message}`);
       throw error;
     }
   }
