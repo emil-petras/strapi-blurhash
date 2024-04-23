@@ -1,12 +1,14 @@
 'use strict';
 
-module.exports = ({ strapi }) => {
+const { getAbsoluteServerUrl } = require('@strapi/utils');
 
+module.exports = ({ strapi }) => {
   const generateBlurhash = async (event, eventType) => {
     const { data, where } = event.params;
 
     if ((data.mime && data.mime.startsWith('image/'))) {
-      data.blurhash = await strapi.plugin('strapi-blurhash').service('blurhash').generateBlurhash(data.url);
+      const fullUrl = `${getAbsoluteServerUrl(strapi.config)}${data.url}`;
+      data.blurhash = await strapi.plugin('strapi-blurhash').service('blurhash').generateBlurhash(fullUrl);
     }
 
     if (eventType === 'beforeUpdate' && strapi.plugin('strapi-blurhash').config('regenerateOnUpdate') === true) {
@@ -16,7 +18,8 @@ module.exports = ({ strapi }) => {
       })
 
       if ((fullData.mime && fullData.mime.startsWith('image/')) && !fullData.blurhash) {
-        data.blurhash = await strapi.plugin('strapi-blurhash').service('blurhash').generateBlurhash(fullData.url);
+        const fullDataUrl = `${getAbsoluteServerUrl(strapi.config)}${fullData.url}`;
+        data.blurhash = await strapi.plugin('strapi-blurhash').service('blurhash').generateBlurhash(fullDataUrl);
       }
     }
   };
