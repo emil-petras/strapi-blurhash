@@ -12,7 +12,7 @@ module.exports = ({ strapi }) => ({
       const arrayBuffer = await response.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
 
-      // Calculate the width and height of the resized image
+      // Set dimensions for the thumbnail used to generate the blurhash
       const width = 32;
       const height = 32;
 
