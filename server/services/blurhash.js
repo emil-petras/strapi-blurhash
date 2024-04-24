@@ -1,5 +1,5 @@
-const { createCanvas, Image } = require('canvas');
 const { encode } = require('blurhash');
+const sharp = require('sharp');
 
 module.exports = ({ strapi }) => ({
   async generateBlurhash(url) {
@@ -11,21 +11,26 @@ module.exports = ({ strapi }) => ({
 
       const arrayBuffer = await response.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
-      const image = new Image();
-      image.src = buffer;
 
-      // Set dimensions for the thumbnail used to generate the blurhash
-      const newWidth = 32;
-      const newHeight = 32;
+      // Calculate the width and height of the resized image
+      const width = 32;
+      const height = 32;
 
-      // Create a canvas and draw the image in the thumbnail size
-      const canvas = createCanvas(newWidth, newHeight);
-      const ctx = canvas.getContext('2d');
-      ctx.drawImage(image, 0, 0, newWidth, newHeight);
+      // Resize the image and get raw pixel data
+      const resizedImage = await sharp(buffer)
+        .resize(width, height)
+        .ensureAlpha()
+        .raw()
+        .toBuffer();
 
-      // Get image data from canvas and encode it to a blurhash
-      const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
-      const blurhash = encode(imageData.data, canvas.width, canvas.height, 4, 4);
+      // Generate the blurhash using the raw pixel data
+      const blurhash = encode(
+        new Uint8ClampedArray(resizedImage), 
+        width, 
+        height, 
+        4, 
+        4
+      );
 
       return blurhash;
     } catch (error) {
