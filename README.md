@@ -18,7 +18,8 @@ module.exports = {
     'strapi-blurhash': {
       enabled: true,
       config: {
-        regenerateOnUpdate: true
+        regenerateOnUpdate: true,
+        forceRegenerateOnUpdate: false,
       }
     },
   }
@@ -86,3 +87,15 @@ The response will be a JSON containing blurhash along with rest of the image dat
   }
 }
 ```
+
+## Changelog
+
+All notable changes to this project will be documented in this section.
+
+### [1.2.1]
+#### Changed
+- now using `sharp` instead of canvas due to issues with .webp images.
+
+### [1.2.2]
+#### Added
+- `forceRegenerateOnUpdate` configuration option to force the regeneration of blurhash on every update, regardless of the existing blurhash.
