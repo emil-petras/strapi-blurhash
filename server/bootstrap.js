@@ -7,7 +7,12 @@ module.exports = ({ strapi }) => {
     const { data, where } = event.params;
 
     if ((data.mime && data.mime.startsWith('image/'))) {
-      const fullUrl = `${getAbsoluteServerUrl(strapi.config)}${data.url}`;
+      let fullUrl = "";
+      if (data.url.startsWith('http')) {
+        fullUrl = data.url;
+      } else {
+        fullUrl = `${getAbsoluteServerUrl(strapi.config)}${data.url}`;
+      }
       data.blurhash = await strapi.plugin('strapi-blurhash').service('blurhash').generateBlurhash(fullUrl);
     }
 
@@ -20,9 +25,13 @@ module.exports = ({ strapi }) => {
         where
       });
     
-      if (fullData.mime.startsWith('image/') && 
-         (forceRegenerateOnUpdate || (!fullData.blurhash && regenerateOnUpdate))) {
-        const fullDataUrl = `${getAbsoluteServerUrl(strapi.config)}${fullData.url}`;
+      if (fullData.mime.startsWith('image/') && (forceRegenerateOnUpdate || (!fullData.blurhash && regenerateOnUpdate))) {
+        let fullDataUrl = "";
+        if (data.url.startsWith('http')) {
+          fullDataUrl = fullData.url;
+        } else {
+          fullDataUrl = `${getAbsoluteServerUrl(strapi.config)}${fullData.url}`;
+        }
         data.blurhash = await strapi.plugin('strapi-blurhash').service('blurhash').generateBlurhash(fullDataUrl);
       }
     }    
