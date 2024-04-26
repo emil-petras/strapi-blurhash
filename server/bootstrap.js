@@ -27,7 +27,7 @@ module.exports = ({ strapi }) => {
     
       if (fullData.mime.startsWith('image/') && (forceRegenerateOnUpdate || (!fullData.blurhash && regenerateOnUpdate))) {
         let fullDataUrl = "";
-        if (data.url.startsWith('http')) {
+        if (fullData.url.startsWith('http')) {
           fullDataUrl = fullData.url;
         } else {
           fullDataUrl = `${getAbsoluteServerUrl(strapi.config)}${fullData.url}`;
