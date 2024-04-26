@@ -103,3 +103,7 @@ All notable changes to this project will be documented in this section.
 ### [1.2.3]
 #### Fixed
 - fixed a bug with the image url
+
+### [1.2.4]
+#### Fixed
+- fixed a bug with the image url var
