@@ -88,8 +88,15 @@ The response will be a JSON containing blurhash along with rest of the image dat
 }
 ```
 
-## Changelog
+## Regenerating Existing Content
 
+If you've recently installed this plugin and already have existing media content, you can easily update the blurhash for these items. Use the **Regenerator** plugin to efficiently handle this task:
+
+- [Regenerator Plugin](https://github.com/emil-petras/strapi-regenerator?tab=readme-ov-file)
+
+This additional plugin can automate the process.
+
+## Changelog
 All notable changes to this project will be documented in this section.
 
 ### [1.2.1]
@@ -107,3 +114,7 @@ All notable changes to this project will be documented in this section.
 ### [1.2.4]
 #### Fixed
 - fixed a bug with the image url var
+
+### [1.2.5]
+#### Changed
+- updated the readme file
