@@ -1,6 +1,13 @@
 # Strapi plugin strapi-blurhash
 
-A plugin for <a href="https://github.com/strapi/strapi">Strapi CMS</a> that generates blurhash for your uploaded images
+A plugin for <a href="https://github.com/strapi/strapi">Strapi CMS</a> that generates blurhash for your uploaded images.
+
+## Links
+
+[npm blurhash package](https://www.npmjs.com/package/strapi-blurhash)
+
+[github blurhash source](https://github.com/emil-petras/strapi-blurhash)
+
 
 ## Installation
 
@@ -118,3 +125,7 @@ All notable changes to this project will be documented in this section.
 ### [1.2.5]
 #### Changed
 - updated the readme file
+
+### [1.2.6]
+#### Changed
+- updated tags
