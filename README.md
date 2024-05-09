@@ -2,13 +2,6 @@
 
 A plugin for <a href="https://github.com/strapi/strapi">Strapi CMS</a> that generates blurhash for your uploaded images.
 
-## Links
-
-[npm blurhash package](https://www.npmjs.com/package/strapi-blurhash)
-
-[github blurhash source](https://github.com/emil-petras/strapi-blurhash)
-
-
 ## Installation
 
 To install, run:
@@ -31,6 +24,12 @@ module.exports = {
     },
   }
 ```
+
+Config explanations:
+- If `forceRegenerateOnUpdate` is true, the plugin disregards whether the blurhash already exists and generates a new one.
+- If `regenerateOnUpdate` is true (and `forceRegenerateOnUpdate` is false), the blurhash will only be generated if it is currently missing. This is a more conservative approach that avoids unnecessary processing but ensures blurhashes are eventually generated for all images.
+
+Both of these values are going to be false if omitted.
 
 ## How to generate blurhash for an image
 
@@ -103,6 +102,12 @@ If you've recently installed this plugin and already have existing media content
 
 This additional plugin can automate the process.
 
+## Links
+
+[npm blurhash package](https://www.npmjs.com/package/strapi-blurhash)
+
+[github blurhash source](https://github.com/emil-petras/strapi-blurhash)
+
 ## Changelog
 All notable changes to this project will be documented in this section.
 
@@ -129,3 +134,10 @@ All notable changes to this project will be documented in this section.
 ### [1.2.6]
 #### Changed
 - updated tags
+
+### [1.2.7]
+#### Fixed
+- fixed forceRegenerateOnUpdate defaults
+
+#### Changed
+- added additional explanation to readme
