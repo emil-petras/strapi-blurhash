@@ -141,3 +141,7 @@ All notable changes to this project will be documented in this section.
 
 #### Changed
 - added additional explanation to readme
+
+### [1.3.0]
+#### Changed
+- removed sharp dependency
