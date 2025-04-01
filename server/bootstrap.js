@@ -9,6 +9,10 @@ module.exports = ({ strapi }) => {
     const port = strapi.config.get('server.port', 1337);
     console.log(`server config - host: ${host}, port: ${port}`);
 
+    // Use the thumbnail instead for faster processing (10+ MB images could take around 40-60s)
+    // TODO: add config to choose what format to use (with fallbacks)
+    const url = data.formats?.thumbnail?.url || data.url;
+
     if ((data.mime && data.mime.startsWith('image/'))) {
       let fullUrl = "";
       if (data.url.startsWith('http')) {
