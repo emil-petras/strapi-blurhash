@@ -20,16 +20,20 @@ module.exports = {
       config: {
         regenerateOnUpdate: true,
         forceRegenerateOnUpdate: false,
+        useSmallestFormat: true,
       }
     },
   }
 ```
 
-Config explanations:
-- If `forceRegenerateOnUpdate` is true, the plugin disregards whether the blurhash already exists and generates a new one.
-- If `regenerateOnUpdate` is true (and `forceRegenerateOnUpdate` is false), the blurhash will only be generated if it is currently missing. This is a more conservative approach that avoids unnecessary processing but ensures blurhashes are eventually generated for all images.
+## Config options
 
-Both of these values are going to be false if omitted.
+| Key                       | Default | Description                                                                                                                                                                                                                                                      |
+|---------------------------|---------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `forceRegenerateOnUpdate` | `false` | If set to true, the plugin disregards whether the blurhash already exists and generates a new one.                                                                                                                                                               |
+| `regenerateOnUpdate`      | `false` | If set to true (and `forceRegenerateOnUpdate` is false), the blurhash will only be generated if it is currently missing. This is a more conservative approach that avoids unnecessary processing but ensures blurhashes are eventually generated for all images. |
+| `useSmallestFormat`       | `true`  | If set to true, the plugin will use the smallest image format available (usually the thumbnail). This improves performance by a lot, especially for large images.                                                                                                |
+
 
 ## How to generate blurhash for an image
 
@@ -100,7 +104,8 @@ If you've recently installed this plugin and already have existing media content
 
 - [Regenerator Plugin](https://github.com/emil-petras/strapi-regenerator?tab=readme-ov-file)
 
-This additional plugin can automate the process.
+This additional plugin can automate the process.  
+Alternatively, you can trigger the update by clicking on an image in the Media Library and then clicking on "Finish" (without changing anything).
 
 ## Links
 
