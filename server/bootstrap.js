@@ -1,6 +1,13 @@
 'use strict';
 
 module.exports = ({ strapi }) => {
+  const findSmallestFormat = (formats) => {
+      if (!formats || Object.values(formats).length === 0) {
+          return null;
+      }
+      return Object.values(formats).reduce((a, b) => (a.height*a.width < b.height*b.width ? a : b));
+  }
+
   const generateBlurhash = async (event, eventType) => {
     console.log(`generating blurhash for ${eventType} event`);
     const { data, where } = event.params;
@@ -9,16 +16,15 @@ module.exports = ({ strapi }) => {
     const port = strapi.config.get('server.port', 1337);
     console.log(`server config - host: ${host}, port: ${port}`);
 
-    // Use the thumbnail instead for faster processing (10+ MB images could take around 40-60s)
-    // TODO: add config to choose what format to use (with fallbacks)
-    const url = data.formats?.thumbnail?.url || data.url;
+    const useSmallestFormat = strapi.plugin('strapi-blurhash').config('useSmallestFormat');
+    const dataBestUrl = (useSmallestFormat ? findSmallestFormat(data.formats)?.url : null) || data.url;
 
     if ((data.mime && data.mime.startsWith('image/'))) {
       let fullUrl = "";
-      if (data.url.startsWith('http')) {
-        fullUrl = data.url;
+      if (dataBestUrl.startsWith('http')) {
+        fullUrl = dataBestUrl;
       } else {
-        fullUrl = `${"http://" + host + ":" + port}${data.url}`;
+        fullUrl = `${"http://" + host + ":" + port}${dataBestUrl}`;
       }
       console.log(`generating blurhash for image: ${fullUrl}`);
       data.blurhash = await strapi.plugin('strapi-blurhash').service('blurhash').generateBlurhash(fullUrl);
@@ -31,17 +37,18 @@ module.exports = ({ strapi }) => {
       console.log(`update config - regenerateOnUpdate: ${regenerateOnUpdate}, forceRegenerateOnUpdate: ${forceRegenerateOnUpdate}`);
     
       const fullData = await strapi.db.query('plugin::upload.file').findOne({
-        select: ['url', 'blurhash', 'name', 'mime'],
+        select: ['url', 'blurhash', 'name', 'mime', 'formats'],
         where
       });
       console.log(`found existing file: ${fullData.name}`);
-    
+
       if (fullData.mime.startsWith('image/') && (forceRegenerateOnUpdate || (!fullData.blurhash && regenerateOnUpdate))) {
+        const fullDataBestUrl = (useSmallestFormat ? findSmallestFormat(fullData.formats)?.url : null) || fullData.url;
         let fullDataUrl = "";
-        if (fullData.url.startsWith('http')) {
-          fullDataUrl = fullData.url;
+        if (fullDataBestUrl.startsWith('http')) {
+          fullDataUrl = fullDataBestUrl;
         } else {
-          fullDataUrl = `${"http://" + host + ":" + port}${fullData.url}`;;
+          fullDataUrl = `${"http://" + host + ":" + port}${fullDataBestUrl}`;
         }
         console.log(`regenerating blurhash for image: ${fullDataUrl}`);
         data.blurhash = await strapi.plugin('strapi-blurhash').service('blurhash').generateBlurhash(fullDataUrl);
